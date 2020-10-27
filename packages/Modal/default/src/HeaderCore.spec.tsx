@@ -1,21 +1,20 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import UserEvent from '@testing-library/user-event';
 import HeaderCore from './HeaderCore';
 
 describe('<HeaderCore', () => {
+  const cancel = jest.fn();
   it('should render header', () => {
-    const component = create(
-      <HeaderCore onCancel={jest.fn()}>Title</HeaderCore>
+    const { asFragment } = render(
+      <HeaderCore onCancel={cancel}>Title</HeaderCore>
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render id click onCancel', () => {
-    const onCancel = jest.fn();
-    const wrapper = mount(<HeaderCore onCancel={onCancel}>Title</HeaderCore>);
-    wrapper.find('button').simulate('click', {});
-    expect(onCancel).toBeCalled();
+    render(<HeaderCore onCancel={cancel}>Title</HeaderCore>);
+    UserEvent.click(screen.getByRole('button', { name: 'Close' }));
+    expect(cancel).toBeCalled();
   });
 });

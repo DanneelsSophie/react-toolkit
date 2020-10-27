@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   withClassDefault,
   withClassModifier,
@@ -10,12 +11,14 @@ const DEFAULT_CLASSNAME = 'af-modal__footer';
 
 export type FooterProps = DivProps & WithClassModifierOptions;
 
+const Footer = ({ classModifier, ...rest }: FooterProps) => <Div {...rest} />;
+
 const enhance = compose<DivProps, FooterProps>(
   withClassDefault(DEFAULT_CLASSNAME),
   withClassModifier
 );
 
-const Enhanced = enhance(Div);
+const Enhanced = enhance(Footer);
 Enhanced.displayName = 'Footer';
 
 export default Enhanced;

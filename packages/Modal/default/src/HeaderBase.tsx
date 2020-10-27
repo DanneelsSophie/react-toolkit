@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   withClassDefault,
   withClassModifier,
@@ -10,11 +12,15 @@ const DEFAULT_CLASSNAME = 'af-modal__header';
 
 export type HeaderBaseProps = DivProps & WithClassModifierOptions;
 
+const HeaderBase = ({ classModifier, ...rest }: HeaderBaseProps) => (
+  <Div {...rest} />
+);
+
 const enhance = compose<DivProps, HeaderBaseProps>(
   withClassDefault(DEFAULT_CLASSNAME),
   withClassModifier
 );
 
-const Enhanced = enhance(Div);
+const Enhanced = enhance(HeaderBase);
 Enhanced.displayName = 'HeaderBase';
 export default Enhanced;

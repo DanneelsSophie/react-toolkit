@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HeaderBase> should render header 1`] = `
-<div
-  className="af-modal__header"
->
-  content
-</div>
+<DocumentFragment>
+  <div
+    class="af-modal__header"
+  >
+    content
+  </div>
+</DocumentFragment>
 `;

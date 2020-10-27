@@ -1,29 +1,32 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import ReactModal from 'react-modal';
+import { render } from '@testing-library/react';
+import UserEvent from '@testing-library/user-event';
 import ModalCore from './ModalCore';
 
 describe('<ModalCore>', () => {
   it('should render modalCore', () => {
-    const component = mount(
+    const { asFragment } = render(
       <ModalCore isOpen onOutsideTap={jest.fn()}>
         Content
-      </ModalCore>
+      </ModalCore>,
+      { container: document.body }
     );
-    expect(component).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should invoke onOutsideTap when modal is close', () => {
     const onOutsideTap = jest.fn();
-    const component = mount(
-      <ModalCore isOpen onOutsideTap={onOutsideTap}>
-        Content
-      </ModalCore>
+    const { container } = render(
+      <div id="root">
+        <ModalCore isOpen onOutsideTap={onOutsideTap}>
+          Content
+        </ModalCore>
+      </div>,
+
+      { container: document.body }
     );
-    const event = jest.fn();
-    component.find<ReactModal.Props>(ReactModal).prop('onRequestClose')(
-      event()
-    );
-    expect(onOutsideTap).toHaveBeenCalled();
+
+    UserEvent.click(container.querySelector('.ReactModal__Overlay'));
+    expect(onOutsideTap).toBeCalled();
   });
 });
