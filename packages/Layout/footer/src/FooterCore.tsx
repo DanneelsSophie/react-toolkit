@@ -42,7 +42,10 @@ const FooterCoreRaw = ({
 );
 FooterCoreRaw.defaultProps = defaultProps;
 
-const enhance = compose(withClassDefault(DEFAULT_CLASSNAME), withClassModifier);
+const enhance = compose(
+  withClassDefault<FooterCoreProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
+);
 
 const Enhanced = enhance(FooterCoreRaw);
 Enhanced.displayName = 'FooterCore';

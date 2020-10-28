@@ -25,9 +25,9 @@ TitleRaw.defaultProps = defaultProps;
 
 export interface TitleProps extends WithClassModifierOptions, TitleBaseProps {}
 
-const enhance = compose<TitleBaseProps, TitleProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<TitleBaseProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const Enhanced = enhance(TitleRaw);

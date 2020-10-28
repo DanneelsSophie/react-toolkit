@@ -8,7 +8,7 @@ import ButtonCore, { ButtonCoreProps } from './ButtonCore';
 
 export type ButtonProps = WithClickIdProps<ButtonCoreProps, 'onClick'>;
 
-const Button = compose<ButtonCoreProps, ButtonProps>(
+const Button = compose(
   withClickId<ButtonCoreProps>({ event: ['onClick'] })
 )(ButtonCore);
 

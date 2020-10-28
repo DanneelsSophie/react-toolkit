@@ -93,9 +93,9 @@ class Items extends React.PureComponent<ItemsComponentProps> {
 }
 export type ItemsProps = ItemsComponentProps & WithClassModifierOptions;
 
-const enhance = compose<ItemsComponentProps, ItemsProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<ItemsComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 const Enhance = enhance(Items);
 Enhance.defaultProps = defaultProps;

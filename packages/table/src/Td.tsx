@@ -42,9 +42,9 @@ const Td: React.SFC<TdComponentProps> = (props) => {
 };
 
 export type TdProps = TdComponentProps & WithClassModifierOptions;
-const enhance = compose<TdComponentProps, TdProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<TdComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 Td.defaultProps = defaultProps;

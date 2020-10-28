@@ -39,9 +39,9 @@ const HeaderRestitution = ({
 type HeaderRestitutionProps = WithClassModifierOptions &
   HeaderRestitutionBaseProps;
 
-const enhance = compose<HeaderRestitutionBaseProps, HeaderRestitutionProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<HeaderRestitutionBaseProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const defaultProps: Partial<HeaderRestitutionProps> = {

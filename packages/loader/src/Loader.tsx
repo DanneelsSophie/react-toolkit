@@ -65,6 +65,6 @@ const Loader = ({ className, text, mode, children }: Props) => {
 Loader.defaultProps = defaultProps;
 
 export default compose(
-  withClassDefault('af-loader'),
-  withClassModifier
+  withClassDefault<Props>('af-loader'),
+  withClassModifier()
 )(Loader);

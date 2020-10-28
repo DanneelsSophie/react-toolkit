@@ -41,9 +41,9 @@ const Th: React.SFC<ThComponentProps> = (props) => {
   );
 };
 export type ThProps = ThComponentProps & WithClassModifierOptions;
-const enhance = compose<ThComponentProps, ThProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<ThComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 Th.defaultProps = defaultProps;

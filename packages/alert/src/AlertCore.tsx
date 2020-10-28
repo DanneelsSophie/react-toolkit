@@ -8,12 +8,13 @@ import {
 
 const DEFAULT_CLASSNAME = 'af-alert';
 
-export interface AlertCoreComponentProps {
+export type AlertCoreComponentProps = {
   title: string;
   iconClassName?: string;
   onClose?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
-}
+} & WithClassModifierOptions;
+export type AlertCoreProps = AlertCoreComponentProps;
 
 const AlertCoreRaw: React.SFC<AlertCoreComponentProps> = ({
   className,
@@ -43,11 +44,9 @@ const AlertCoreRaw: React.SFC<AlertCoreComponentProps> = ({
   </div>
 );
 
-export type AlertCoreProps = AlertCoreComponentProps & WithClassModifierOptions;
-
-const enhance = compose<AlertCoreComponentProps, AlertCoreProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<AlertCoreComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const Enhanced = enhance(AlertCoreRaw);

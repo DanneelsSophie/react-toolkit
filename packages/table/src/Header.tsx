@@ -26,9 +26,9 @@ const Header: React.SFC<HeaderComponentProps> = (props) => {
 };
 
 export type HeaderProps = HeaderComponentProps & WithClassModifierOptions;
-const enhance = compose<HeaderComponentProps, HeaderProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<HeaderComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 Header.displayName = 'Table.Header';

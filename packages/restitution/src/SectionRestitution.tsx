@@ -23,9 +23,9 @@ const SectionRestitution = ({
 type SectionRestitutionProps = WithClassModifierOptions &
   SectionRestitutionBaseProps;
 
-const enhance = compose<SectionRestitutionBaseProps, SectionRestitutionProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<SectionRestitutionBaseProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const defaultProps: Partial<SectionRestitutionProps> = {

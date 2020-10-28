@@ -29,10 +29,10 @@ export const SectionRestitutionColumn = ({
 type SectionRestitutionColumnProps = WithClassModifierOptions &
   SectionRestitutionColumnBaseProps;
 
-const enhance = compose<
-  SectionRestitutionColumnBaseProps,
-  SectionRestitutionColumnProps
->(withClassDefault(DEFAULT_CLASSNAME), withClassModifier);
+const enhance = compose(
+  withClassDefault<SectionRestitutionColumnBaseProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
+);
 
 const defaultProps: Partial<SectionRestitutionColumnProps> = {
   children: null,

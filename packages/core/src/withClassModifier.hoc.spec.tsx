@@ -1,28 +1,43 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { mount } from 'enzyme';
 import withClassModifier, {
   WithClassModifierOptions,
 } from './withClassModifier.hoc';
 
-const CLASS_TEST = 'af-class-test';
-const CLASS_MODIFIER = 'blue';
-
-const MyComponent: React.SFC<WithClassModifierOptions> = ({ className }) => (
-  <span className={className}>My component</span>
-);
-
-const Enhanced = withClassModifier(MyComponent);
+type MyComponentProps = {
+  foo: string;
+} & WithClassModifierOptions;
+const MyComponent: ComponentType<MyComponentProps> = (props) => {
+  const { foo } = props;
+  return <span>{foo}</span>;
+};
 
 describe('HOC withClassDefault', () => {
-  it(`Should have className "${CLASS_TEST}"`, () => {
-    const props = { className: CLASS_TEST };
-    const wrapper = mount(<Enhanced {...props} />);
-    expect(wrapper.prop('className')).toEqual(CLASS_TEST);
+  it('Should have className without modifier', () => {
+    // Arrange
+    const className = 'some-class-name';
+    const Enhanced = withClassModifier<MyComponentProps>()(MyComponent);
+
+    // Act
+    const wrapper = mount(<Enhanced foo="bar" className={className} />);
+
+    // Assert
+    expect(wrapper.prop('className')).toEqual(className);
   });
-  it(`Should have className "${CLASS_TEST}" with modifier "${CLASS_TEST}--${CLASS_MODIFIER}"`, () => {
-    const props = { className: CLASS_TEST, classModifier: CLASS_MODIFIER };
-    const wrapper = mount(<Enhanced {...props} />);
-    const expectedClassName = `${CLASS_TEST} ${CLASS_TEST}--${CLASS_MODIFIER}`;
+
+  it('Should have className with modifier', () => {
+    // Arrange
+    const className = 'some-class-name';
+    const classModifier = 'modifier';
+    const Enhanced = withClassModifier<MyComponentProps>()(MyComponent);
+
+    // Act
+    const wrapper = mount(
+      <Enhanced foo="bar" className={className} classModifier={classModifier} />
+    );
+
+    // Assert
+    const expectedClassName = `${className} ${className}--${classModifier}`;
     expect(wrapper.find(MyComponent).prop('className')).toEqual(
       expectedClassName
     );

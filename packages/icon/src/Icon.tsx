@@ -27,9 +27,9 @@ IconRaw.defaultProps = defaultProps;
 
 export type IconProps = IconBaseProps & WithClassModifierOptions;
 
-const enhance = compose<IconBaseProps, IconProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<IconBaseProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const Enhanced = enhance(IconRaw);

@@ -136,9 +136,9 @@ const Pager = (props: PagerComponentProps) => {
 
 export type PagerProps = PagerComponentProps & WithClassModifierOptions;
 
-const enhance = compose<PagerComponentProps, PagerProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<PagerComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 Pager.defaultProps = defaultProps;
 const Enhance = enhance(Pager);

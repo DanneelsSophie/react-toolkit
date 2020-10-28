@@ -7,7 +7,7 @@ import ActionCore, { ActionCoreProps } from './ActionCore';
 
 export type ActionProps = WithClickIdProps<ActionCoreProps, 'onClick'>;
 
-const Action = compose<ActionCoreProps, ActionProps>(
+const Action = compose(
   withClickId<ActionCoreProps>({ event: ['onClick'] })
 )(ActionCore);
 Action.displayName = 'Action';

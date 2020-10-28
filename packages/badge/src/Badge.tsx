@@ -23,11 +23,9 @@ const BadgeRaw: React.SFC<BadgeBaseProps> = ({ children, ...otherProps }) => (
 
 BadgeRaw.defaultProps = defaultProps;
 
-interface BadgeProps extends WithClassModifierOptions, BadgeBaseProps {}
-
-const enhance = compose<BadgeBaseProps, BadgeProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<BadgeBaseProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const Enhanced = enhance(BadgeRaw);

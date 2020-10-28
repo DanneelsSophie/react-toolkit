@@ -33,10 +33,10 @@ const ActionCore: React.FC<ActionCoreProps> = ({ icon, ...otherProps }) => (
 
 ActionCore.defaultProps = defaultProps;
 
-const enhance = compose<ActionCoreProps, ActionCoreProps>(
-  withClassDefault(defaultClassName),
-  withClassModifier,
-  withProps(({ onClick, href, role }: ActionCoreProps) => ({
+const enhance = compose(
+  withClassDefault<ActionCoreProps>(defaultClassName),
+  withClassModifier(),
+  withProps(({ onClick, href, role }) => ({
     href: onClick ? '#' : href || undefined,
     role: onClick ? 'button' : role || undefined,
   }))

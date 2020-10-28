@@ -12,11 +12,12 @@ type RestitutionValuesProps = {
   values: string[];
 };
 
-type RestitutionBaseProps = Partial<RestitutionValuesProps> & {
-  label: string;
-  value?: string;
-  className?: string;
-};
+type RestitutionProps = WithClassModifierOptions &
+  Partial<RestitutionValuesProps> & {
+    label: string;
+    value?: string;
+    className?: string;
+  };
 
 const RestitutionValues = ({ values }: RestitutionValuesProps) => {
   const li = values.map((v: string) => (
@@ -45,15 +46,13 @@ const Restitution = ({ label, value, values, className }: RestitutionProps) => {
   );
 };
 
-type RestitutionProps = WithClassModifierOptions & RestitutionBaseProps;
-
 const defaultProps: Partial<RestitutionProps> = {
   className: DEFAULT_CLASSNAME,
 };
 
-const enhance = compose<RestitutionBaseProps, RestitutionProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<RestitutionProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const Enhanced = enhance(Restitution);

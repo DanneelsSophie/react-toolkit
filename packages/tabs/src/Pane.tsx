@@ -24,8 +24,8 @@ const Pane: React.SFC<PaneComponentProps> = ({
   return <div className={className}>{children}</div>;
 };
 
-const enchance = compose<PaneComponentProps, PaneComponentProps>(
-  withClassDefault(DEFAULT_CLASSNAME)
+const enchance = compose(
+  withClassDefault<PaneComponentProps>(DEFAULT_CLASSNAME)
 )(Pane);
 
 export default enchance;

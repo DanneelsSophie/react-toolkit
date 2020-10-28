@@ -96,9 +96,9 @@ class Paging extends React.PureComponent<PagingComponentProps> {
 
 export type PagingProps = PagingComponentProps & WithClassModifierOptions;
 
-const enhance = compose<PagingComponentProps, PagingProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<PagingComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 const Enhance = enhance(Paging);
 Enhance.defaultProps = defaultProps;

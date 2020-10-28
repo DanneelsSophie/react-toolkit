@@ -28,13 +28,10 @@ const SectionRestitutionRow = ({
   </div>
 );
 
-type SectionRestitutionRowProps = WithClassModifierOptions &
-  SectionRestitutionRowBaseProps;
-
-const enhance = compose<
-  SectionRestitutionRowBaseProps,
-  SectionRestitutionRowProps
->(withClassDefault(DEFAULT_CLASSNAME), withClassModifier);
+const enhance = compose(
+  withClassDefault<SectionRestitutionRowBaseProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
+);
 
 const defaultProps: Partial<SectionRestitutionRowBaseProps> = {
   children: null,

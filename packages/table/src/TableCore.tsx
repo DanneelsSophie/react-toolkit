@@ -20,9 +20,9 @@ const TableCore: React.SFC<TableCoreComponentProps> = (props) => {
 
 export type TableCoreProps = TableCoreComponentProps & WithClassModifierOptions;
 
-const enhance = compose<TableCoreComponentProps, TableCoreProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<TableCoreComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 TableCore.displayName = 'TableCore';
 export default enhance(TableCore);

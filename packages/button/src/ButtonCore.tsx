@@ -25,9 +25,9 @@ const ButtonRaw: React.SFC<ButtonCoreComponentProps> = (props) => {
 export type ButtonCoreProps = ButtonCoreComponentProps &
   WithClassModifierOptions;
 
-const enhance = compose<ButtonCoreComponentProps, ButtonCoreProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<ButtonCoreComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const Enhanced = enhance(ButtonRaw);

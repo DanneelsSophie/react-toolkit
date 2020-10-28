@@ -28,9 +28,9 @@ const defaultProps: Partial<ArticleRestitutionProps> = {
   className: DEFAULT_CLASSNAME,
 };
 
-const enhance = compose<ArticleRestitutionBaseProps, ArticleRestitutionProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<ArticleRestitutionBaseProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const Enhanced = enhance(ArticleRestitution);

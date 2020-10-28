@@ -10,9 +10,9 @@ const DEFAULT_CLASSNAME = 'af-modal__body';
 
 export type BodyProps = DivProps & WithClassModifierOptions;
 
-const enhance = compose<DivProps, BodyProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<DivProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 
 const Enhanced = enhance(Div);

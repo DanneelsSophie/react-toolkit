@@ -26,9 +26,9 @@ const Tr: React.SFC<TrComponentProps> = (props) => {
 
 export type TrProps = TrComponentProps & WithClassModifierOptions;
 
-const enhance = compose<TrComponentProps, TrProps>(
-  withClassDefault(DEFAULT_CLASSNAME),
-  withClassModifier
+const enhance = compose(
+  withClassDefault<TrComponentProps>(DEFAULT_CLASSNAME),
+  withClassModifier()
 );
 Tr.defaultProps = defaultProps;
 Tr.displayName = 'Table.Tr';
